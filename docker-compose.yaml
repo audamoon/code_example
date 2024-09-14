@@ -1,0 +1,21 @@
+services:
+  postgres:
+    image: postgres:16.4
+    container_name: "postgres"
+    restart: always
+    environment:
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    volumes:
+      - ./build/sql/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - '5432:5432'
+  app:
+    build: ./
+    container_name: "billing_service"
+    restart: always
+    depends_on:
+      - postgres
+    ports:
+      - '8080:8080'

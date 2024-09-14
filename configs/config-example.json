@@ -1,0 +1,24 @@
+{
+  "app": {
+    "address": {
+      "host": "0.0.0.0",
+      "port": 8080
+    }
+  },
+  "db": {
+    "postgres": {
+      "user": {
+        "login": "admin",
+        "password": "pass"
+      },
+      "name": "billing",
+      "address": {
+        "host": "postgres",
+        "port": 5432
+      },
+      "ssl_mode": "disable",
+      "max_conn": 1000,
+      "max_idle_conn": 1000
+    }
+  }
+}
